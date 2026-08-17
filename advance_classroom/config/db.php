@@ -1,27 +1,40 @@
 <?php
 /**
  * Database Configuration — Advanced Classroom System
- * 
+ *
  * Uses PDO for secure database connections with prepared statements.
- * Configure the constants below for your XAMPP/Laragon environment.
+ * In production (Railway), set environment variables.
+ * Locally (XAMPP), values are loaded from the root .env file.
  */
+
+// ── Load .env file (local development only) ──
+$_envFile = __DIR__ . '/../../.env';
+if (file_exists($_envFile)) {
+    foreach (file($_envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $_line) {
+        if (str_starts_with(trim($_line), '#') || !str_contains($_line, '=')) continue;
+        [$_k, $_v] = explode('=', $_line, 2);
+        $_k = trim($_k); $_v = trim($_v);
+        if (!getenv($_k)) putenv("$_k=$_v");
+    }
+}
+unset($_envFile, $_line, $_k, $_v);
 
 // ============================================================
 // Database Configuration
 // ============================================================
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'advanced_classroom');
-define('DB_USER', 'root');
-define('DB_PASS', '');          // Default XAMPP has no password
+define('DB_HOST',    getenv('MYSQLHOST')     ?: 'localhost');
+define('DB_NAME',    getenv('MYSQLDATABASE') ?: 'advanced_classroom');
+define('DB_USER',    getenv('MYSQLUSER')     ?: 'root');
+define('DB_PASS',    getenv('MYSQLPASSWORD') ?: '');
 define('DB_CHARSET', 'utf8mb4');
 
 // ============================================================
 // Application Configuration
 // ============================================================
-define('APP_NAME', 'Advanced Classroom');
+define('APP_NAME',    'Advanced Classroom');
 define('APP_VERSION', '1.0.0');
-define('BASE_URL', '/Smart_Class/advance_classroom');   // Folder name as served by XAMPP
-define('UPLOAD_DIR', __DIR__ . '/../assets/uploads/');
+define('BASE_URL',    getenv('APP_URL') ?: 'http://localhost/Smart_Class/advance_classroom');
+define('UPLOAD_DIR',  __DIR__ . '/../assets/uploads/');
 define('MAX_FILE_SIZE', 10 * 1024 * 1024);  // 10 MB
 
 // Allowed file types for uploads
