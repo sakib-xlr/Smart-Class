@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="2" value="Figure 3.3: Top-Level Architectural Context Diagram — SmartClass LMS" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="200" y="10" width="780" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- External Actors (Left) -->
+    <!-- Teacher Actor -->
+    <mxCell id="10" value="Teacher" style="shape=mxgraph.flowchart.actor;fillColor=#000000;strokeColor=#000000;labelBackgroundColor=none;fontSize=12;fontStyle=1;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+      <mxGeometry x="60" y="160" width="50" height="70" as="geometry" />
+    </mxCell>
+    <!-- Student Actor -->
+    <mxCell id="11" value="Student" style="shape=mxgraph.flowchart.actor;fillColor=#000000;strokeColor=#000000;labelBackgroundColor=none;fontSize=12;fontStyle=1;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+      <mxGeometry x="60" y="340" width="50" height="70" as="geometry" />
+    </mxCell>
+    <!-- Guardian Actor -->
+    <mxCell id="12" value="Guardian / Parent" style="shape=mxgraph.flowchart.actor;fillColor=#000000;strokeColor=#000000;labelBackgroundColor=none;fontSize=12;fontStyle=1;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+      <mxGeometry x="55" y="520" width="60" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- System Boundary Box -->
+    <mxCell id="20" value="SmartClass LMS System" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;strokeWidth=3;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="210" y="80" width="600" height="600" as="geometry" />
+    </mxCell>
+
+    <!-- Layers inside system boundary -->
+    <!-- Presentation Layer -->
+    <mxCell id="30" value="PRESENTATION LAYER&#xa;HTML5 | CSS3 (Dark Theme) | JavaScript ES6+&#xa;Chart.js | Font Awesome 6.5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="230" y="120" width="560" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Application Layer -->
+    <mxCell id="31" value="APPLICATION LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="220" width="560" height="30" as="geometry" />
+    </mxCell>
+    <!-- Page Layer -->
+    <mxCell id="32" value="Page Layer (dashboard/, classroom/, analytics/, guardian/)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="230" y="255" width="270" height="50" as="geometry" />
+    </mxCell>
+    <!-- API Layer -->
+    <mxCell id="33" value="API Layer (api/: auth, classes, assignments, quiz, qr_attendance, notifications, ai_chat, archive, search)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="515" y="255" width="275" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Infrastructure Layer -->
+    <mxCell id="40" value="INFRASTRUCTURE LAYER&#xa;config/db.php (DatabaseHelper — PDO Singleton)     config/layout.php (LayoutRenderer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="230" y="320" width="560" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Data Layer -->
+    <mxCell id="50" value="DATA LAYER — MySQL 8.x Database: smart_classroom&#xa;22 Tables | utf8mb4_unicode_ci | Foreign Key Constraints | PDO Prepared Statements" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="230" y="410" width="560" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Security Components -->
+    <mxCell id="60" value="SECURITY COMPONENTS&#xa;BCrypt Password Hashing | PDO Prepared Statements&#xa;Session-Based RBAC | XSS Escaping | File Upload Whitelisting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="230" y="500" width="560" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- External Systems (Right) -->
+    <!-- OpenRouter AI API -->
+    <mxCell id="70" value="OpenRouter AI API&#xa;(NVIDIA Nemotron Model)" style="shape=mxgraph.aws4.traditional_server;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;" vertex="1" parent="1">
+      <mxGeometry x="895" y="130" width="120" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- QR Server API -->
+    <mxCell id="71" value="QR Server API&#xa;(api.qrserver.com)" style="shape=mxgraph.aws4.traditional_server;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+      <mxGeometry x="895" y="280" width="120" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Google Meet / Zoom -->
+    <mxCell id="72" value="Video Platform&#xa;(Google Meet / Zoom)" style="shape=mxgraph.aws4.traditional_server;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;align=center;" vertex="1" parent="1">
+      <mxGeometry x="895" y="430" width="120" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Arrows from actors -->
+    <mxCell id="a1" value="Class Mgmt, Assignments&#xa;QR Sessions, Grades" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=9;" edge="1" source="10" target="30" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="a2" value="Submissions, Attendance&#xa;Quiz Answers, Offline Tokens" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=9;" edge="1" source="11" target="30" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="a3" value="Student Progress&#xa;Reports (read-only)" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=9;" edge="1" source="12" target="30" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Arrows to external APIs -->
+    <mxCell id="b1" value="Prompt + History →&#xa;← AI Text Response" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=9;" edge="1" source="33" target="70" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="b2" value="Encoded URL →&#xa;← QR Image URL" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=9;" edge="1" source="33" target="71" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="b3" value="External Link&#xa;(redirect)" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=9;" edge="1" source="33" target="72" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Layer arrows -->
+    <mxCell id="c1" style="endArrow=block;startArrow=block;html=1;" edge="1" source="30" target="31" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c2" style="endArrow=block;startArrow=block;html=1;" edge="1" source="31" target="40" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c3" style="endArrow=block;startArrow=block;html=1;" edge="1" source="40" target="50" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c4" style="endArrow=block;startArrow=block;html=1;" edge="1" source="50" target="60" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+  </root>
+</mxGraphModel>

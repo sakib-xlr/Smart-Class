@@ -1,0 +1,21 @@
+[phases.setup]
+nixPkgs = [
+  "php82",
+  "php82Extensions.pdo",
+  "php82Extensions.pdo_mysql",
+  "php82Extensions.mysqli",
+  "php82Extensions.gd",
+  "php82Extensions.mbstring",
+  "php82Extensions.zip",
+  "php82Extensions.curl",
+  "php82Extensions.session",
+  "apacheHttpd"
+]
+
+[phases.build]
+cmds = [
+  "cp apache.conf /etc/apache2/sites-available/000-default.conf || true"
+]
+
+[start]
+cmd = "apache2ctl -D FOREGROUND"

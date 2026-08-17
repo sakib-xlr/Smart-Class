@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advanced Classroom Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            app: {
+              bg: '#161521',
+              sidebar: '#1A1926',
+              card: '#1F1E2E',
+              border: '#2A293D',
+              text: '#E2E8F0',
+              muted: '#94A3B8',
+              primary: '#6366F1',
+              primaryHover: '#4F46E5',
+              success: '#10B981',
+              warning: '#F59E0B',
+              danger: '#EF4444',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styles">
+    body {
+      background-color: #161521;
+      color: #E2E8F0;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .glass-card {
+      background: rgba(31, 30, 46, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(42, 41, 61, 0.5);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .sidebar-link {
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .sidebar-link:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+      color: #6366F1;
+    }
+
+    .sidebar-link.active {
+      background-color: rgba(99, 102, 241, 0.15);
+      color: #6366F1;
+      border-left: 3px solid #6366F1;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A293D;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4B5563;
+    }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden text-app-text bg-app-bg selection:bg-app-primary selection:text-white antialiased">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-app-border bg-app-sidebar flex flex-col h-full z-20">
+<!-- Logo area -->
+<div class="h-16 flex items-center px-6 border-b border-app-border shrink-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/20">
+<i class="fa-solid fa-graduation-cap text-sm"></i>
+</div>
+<div>
+<h1 class="font-bold text-white tracking-wide text-sm">Advanced Classroom</h1>
+<p class="text-[10px] text-app-muted font-medium tracking-wider uppercase">Advanced V3.8</p>
+</div>
+</div>
+</div>
+<!-- Scrollable Nav -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-6">
+<!-- Role Badge -->
+<div class="px-3 mb-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+<i class="fa-solid fa-user-graduate text-[10px]"></i> Student
+          </span>
+</div>
+<!-- MAIN Section -->
+<div>
+<p class="px-4 text-[10px] font-semibold text-app-muted uppercase tracking-wider mb-2">Main</p>
+<div class="space-y-1">
+<a class="sidebar-link active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium" href="#">
+<i class="fa-solid fa-house w-5 text-center text-app-primary"></i>
+            Dashboard
+          </a><a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#"><i class="fa-solid fa-rss w-5 text-center"></i> Feed</a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-right-to-bracket w-5 text-center"></i>
+            Join Class
+          </a>
+</div>
+</div>
+<!-- LEARNING Section -->
+<div>
+<p class="px-4 text-[10px] font-semibold text-app-muted uppercase tracking-wider mb-2">Learning</p>
+<div class="space-y-1">
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-list-check w-5 text-center"></i>
+            Assignments
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-circle-question w-5 text-center"></i>
+            Quizzes
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-star w-5 text-center"></i>
+            My Grades
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-folder w-5 text-center"></i>
+            Materials
+          </a>
+</div>
+</div>
+<!-- TRACK Section -->
+<div>
+<p class="px-4 text-[10px] font-semibold text-app-muted uppercase tracking-wider mb-2">Track</p>
+<div class="space-y-1">
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-chart-line w-5 text-center"></i>
+            My Progress
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-calendar-check w-5 text-center"></i>
+            Attendance
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-cloud-arrow-down w-5 text-center"></i>
+            Offline Sub.
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+            Timeline
+          </a>
+</div>
+</div>
+<!-- GLOBAL Section -->
+<div>
+<p class="px-4 text-[10px] font-semibold text-app-muted uppercase tracking-wider mb-2">Global</p>
+<div class="space-y-1">
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-calendar-days w-5 text-center"></i>
+            Calendar
+          </a>
+<a class="sidebar-link flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400 group" href="#">
+<div class="flex items-center gap-3">
+<i class="fa-solid fa-message w-5 text-center"></i>
+               Messages
+             </div>
+<span class="bg-app-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">2</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-bell w-5 text-center"></i>
+            Notifications
+          </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400" href="#">
+<i class="fa-solid fa-gear w-5 text-center"></i>
+            Settings
+          </a>
+</div>
+</div>
+</nav>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+<!-- BEGIN: Header -->
+<header class="h-16 shrink-0 border-b border-app-border bg-app-sidebar/80 backdrop-blur flex items-center justify-between px-6 z-10 sticky top-0">
+<h2 class="text-lg font-semibold text-white">My Dashboard</h2>
+<div class="flex items-center gap-4">
+<!-- Search -->
+<div class="relative hidden sm:block">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<i class="fa-solid fa-magnifying-glass text-app-muted text-sm"></i>
+</div>
+<input class="block w-64 pl-10 pr-3 py-1.5 border border-app-border rounded-lg leading-5 bg-app-card text-app-text placeholder-app-muted focus:outline-none focus:ring-1 focus:ring-app-primary focus:border-app-primary sm:text-sm transition-colors" placeholder="Search... (Ctrl+K)" type="text"/>
+</div>
+<!-- Join Class Button -->
+<button class="bg-app-primary hover:bg-app-primaryHover text-white px-4 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors shadow-lg shadow-app-primary/20">
+<i class="fa-solid fa-right-to-bracket"></i> Join Class
+        </button>
+<div class="h-6 w-px bg-app-border mx-1"></div>
+<!-- Notification & Chat -->
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-app-card border border-app-border text-app-muted hover:text-white flex items-center justify-center transition-colors relative">
+<i class="fa-solid fa-bell text-sm"></i>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border border-app-card"></span>
+</button>
+<button class="w-8 h-8 rounded-full bg-app-card border border-app-border text-app-muted hover:text-white flex items-center justify-center transition-colors">
+<i class="fa-solid fa-message text-sm"></i>
+</button>
+</div>
+<!-- Profile -->
+<button class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white font-semibold text-sm border-2 border-app-bg hover:ring-2 hover:ring-app-primary/50 transition-all">
+          M
+        </button>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Page Content Scrollable Area -->
+<div class="flex-1 overflow-auto p-6 scroll-smooth">
+<!-- Content Max Width Container -->
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Welcome Banner -->
+<section class="rounded-2xl p-6 relative overflow-hidden flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg shadow-indigo-500/30">
+<!-- Decorative element -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                Hey, Md! <i class="fa-solid fa-graduation-cap text-white/80"></i>
+</h2>
+<p class="text-white/90 mt-1">You have <span class="text-white font-bold">0</span> pending assignments. Keep it up!</p>
+</div>
+<div class="relative z-10 text-right">
+<div class="text-4xl font-bold text-white tracking-tight flex items-baseline justify-end gap-1">
+                    —<span class="text-2xl">%</span>
+</div>
+<p class="text-xs text-white/80 uppercase tracking-wider font-medium mt-1">Overall Average</p>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"><!-- Stat Card 1 -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between h-32 border-l-4 border-l-indigo-500 hover:bg-app-card/80 transition-all relative group">
+<div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg shrink-0">
+<i class="fa-solid fa-laptop"></i>
+</div>
+<div class="mt-2">
+<div class="text-xs text-app-muted font-medium">Enrolled Classes</div>
+<div class="text-2xl font-bold text-white">0</div>
+</div>
+<div class="absolute bottom-4 right-4 text-white/20 group-hover:text-indigo-400 transition-colors">
+<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between h-32 border-l-4 border-l-amber-500 hover:bg-app-card/80 transition-all relative group">
+<div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg shrink-0">
+<i class="fa-solid fa-list-check"></i>
+</div>
+<div class="mt-2">
+<div class="text-xs text-app-muted font-medium">Pending Tasks</div>
+<div class="text-2xl font-bold text-white">0</div>
+</div>
+<div class="absolute bottom-4 right-4 text-white/20 group-hover:text-amber-500 transition-colors">
+<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between h-32 border-l-4 border-l-emerald-500 hover:bg-app-card/80 transition-all relative group">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg shrink-0">
+<i class="fa-solid fa-calendar-check"></i>
+</div>
+<div class="mt-2">
+<div class="text-xs text-app-muted font-medium">Attendance Rate</div>
+<div class="text-2xl font-bold text-white flex items-baseline gap-0.5">0<span class="text-base">%</span></div>
+</div>
+<div class="absolute bottom-4 right-4 text-white/20 group-hover:text-emerald-500 transition-colors">
+<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between h-32 border-l-4 border-l-purple-500 hover:bg-app-card/80 transition-all relative group">
+<div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg shrink-0">
+<i class="fa-solid fa-circle-question"></i>
+</div>
+<div class="mt-2">
+<div class="text-xs text-app-muted font-medium">Quiz Average</div>
+<div class="text-2xl font-bold text-white flex items-baseline gap-0.5">0<span class="text-base">%</span></div>
+</div>
+<div class="absolute bottom-4 right-4 text-white/20 group-hover:text-purple-400 transition-colors">
+<i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+</div>
+</div></section>
+<!-- Main Layout Grid (Left Wide, Right Narrow) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- LEFT COLUMN (Wider) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- My Classes Section -->
+<section class="glass-card rounded-2xl flex flex-col min-h-[400px]">
+<div class="p-5 border-b border-app-border flex items-center justify-between shrink-0">
+<h3 class="text-base font-semibold text-white flex items-center gap-2">
+<i class="fa-solid fa-book-open text-indigo-400"></i> My Classes
+                        </h3>
+<button class="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors">
+<i class="fa-solid fa-plus"></i> Join Class
+                        </button>
+</div>
+<!-- Empty State for Classes -->
+<div class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+<div class="w-16 h-16 bg-app-card rounded-2xl flex items-center justify-center mb-4 border border-app-border/50 shadow-inner">
+<i class="fa-solid fa-door-closed text-2xl text-app-muted"></i>
+</div>
+<h4 class="text-lg font-medium text-white mb-1">Not enrolled in any class</h4>
+<p class="text-app-muted text-sm mb-6">Ask your teacher for the class code</p>
+<button class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors shadow-lg shadow-emerald-500/20">
+<i class="fa-solid fa-right-to-bracket"></i> Join Class
+                        </button>
+</div>
+</section>
+<!-- Activity Feed Section (Placeholder for extending the view) -->
+<section class="glass-card rounded-2xl flex flex-col min-h-[200px]">
+<div class="p-5 border-b border-app-border shrink-0">
+<h3 class="text-base font-semibold text-white flex items-center gap-2">
+<i class="fa-solid fa-bars-staggered text-cyan-400"></i> Activity Feed
+                        </h3>
+</div>
+<div class="flex-1 p-6">
+<!-- Activity feed content would go here -->
+<div class="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-app-border before:to-transparent"><div class="relative flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0 z-10 bg-app-bg"><i class="fa-solid fa-file-signature text-indigo-400 text-xs"></i></div><div class="flex-1 pt-1"><p class="text-sm text-white font-medium">New assignment posted in <span class="text-indigo-400">Quantum Physics II</span></p><p class="text-xs text-app-muted mt-0.5">2 hours ago</p></div></div><div class="relative flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 z-10 bg-app-bg"><i class="fa-solid fa-book text-emerald-400 text-xs"></i></div><div class="flex-1 pt-1"><p class="text-sm text-white font-medium">Dr. Julian Vane added a new lecture note</p><p class="text-xs text-app-muted mt-0.5">5 hours ago</p></div></div><div class="relative flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 z-10 bg-app-bg"><i class="fa-solid fa-star text-purple-400 text-xs"></i></div><div class="flex-1 pt-1"><p class="text-sm text-white font-medium">Your submission for <span class="text-purple-400">Linear Algebra III</span> was graded</p><p class="text-xs text-app-muted mt-0.5">Yesterday</p></div></div><div class="relative flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 z-10 bg-app-bg"><i class="fa-solid fa-calendar-day text-amber-400 text-xs"></i></div><div class="flex-1 pt-1"><p class="text-sm text-white font-medium">Upcoming seminar: <span class="text-amber-400">Gothic Literature</span> tomorrow at 10 AM</p><p class="text-xs text-app-muted mt-0.5">1 day ago</p></div></div></div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN (Narrower) -->
+<div class="space-y-6">
+<!-- Pending Work Section -->
+<section class="glass-card rounded-2xl flex flex-col h-[300px]">
+<div class="p-5 border-b border-app-border flex items-center justify-between shrink-0">
+<h3 class="text-base font-semibold text-white flex items-center gap-2">
+<i class="fa-solid fa-list-ul text-amber-500"></i> Pending Work
+                        </h3>
+<span class="w-6 h-6 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center justify-center text-xs font-bold">
+                            0
+                        </span>
+</div>
+<!-- Empty State for Pending Work -->
+<div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+<div class="w-12 h-12 bg-app-card rounded-full flex items-center justify-center mb-3 border border-app-border/50 text-app-muted">
+<i class="fa-solid fa-check text-xl"></i>
+</div>
+<p class="text-emerald-400 font-medium text-sm flex items-center gap-1.5">
+                            All caught up! <i class="fa-solid fa-party-horn text-amber-400"></i>
+</p>
+</div>
+</section>
+<!-- Personal Tracker Section -->
+<section class="glass-card rounded-2xl flex flex-col">
+<div class="p-5 border-b border-app-border shrink-0">
+<h3 class="text-base font-semibold text-white flex items-center gap-2">
+<i class="fa-solid fa-bullseye text-purple-400"></i> Personal Tracker
+                        </h3>
+</div>
+<div class="p-5 space-y-5">
+<!-- Tracker Item 1 -->
+<div>
+<div class="flex justify-between items-end mb-1.5">
+<span class="text-sm text-app-text font-medium">Overall Grade</span>
+<span class="text-sm font-bold text-emerald-400">0%</span>
+</div>
+<div class="w-full bg-app-border rounded-full h-1.5">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<!-- Tracker Item 2 -->
+<div>
+<div class="flex justify-between items-end mb-1.5">
+<span class="text-sm text-app-text font-medium">Attendance</span>
+<span class="text-sm font-bold text-blue-400">0%</span>
+</div>
+<div class="w-full bg-app-border rounded-full h-1.5">
+<div class="bg-blue-500 h-1.5 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<!-- Tracker Item 3 -->
+<div>
+<div class="flex justify-between items-end mb-1.5">
+<span class="text-sm text-app-text font-medium">Quiz Score</span>
+<span class="text-sm font-bold text-purple-400">0%</span>
+</div>
+<div class="w-full bg-app-border rounded-full h-1.5">
+<div class="bg-purple-500 h-1.5 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Page Content Scrollable Area -->
+<!-- Floating Action Button (Chatbot/Help) -->
+<button class="absolute bottom-6 right-6 w-14 h-14 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full shadow-lg shadow-indigo-500/30 flex items-center justify-center text-2xl transition-transform hover:scale-105 z-50">
+<i class="fa-solid fa-robot"></i>
+</button>
+</main>
+<!-- END: Main Content Area -->
+</body></html>

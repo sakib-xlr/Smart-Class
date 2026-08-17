@@ -1,0 +1,225 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LIFELINE HEADERS                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- User (Actor) -->
+    <mxCell id="2" value="User&#xa;(Browser)" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="40" y="30" width="80" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="3" value="" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="1" source="2">
+      <mxGeometry x="0" y="0" width="100" height="100" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="80" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- index.php -->
+    <mxCell id="4" value="index.php&#xa;(Login Page)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="170" y="40" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="5" value="" style="endArrow=none;dashed=1;strokeColor=#d6b656;strokeWidth=1;" edge="1" parent="1" source="4">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="225" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- api/auth.php -->
+    <mxCell id="6" value="api/auth.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="340" y="40" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="7" value="" style="endArrow=none;dashed=1;strokeColor=#82b366;strokeWidth=1;" edge="1" parent="1" source="6">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="395" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Session Manager -->
+    <mxCell id="8" value="Session Manager&#xa;(PHP $_SESSION)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="510" y="40" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="9" value="" style="endArrow=none;dashed=1;strokeColor=#9673a6;strokeWidth=1;" edge="1" parent="1" source="8">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="565" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- MySQL users -->
+    <mxCell id="10" value="MySQL&#xa;users table" style="shape=mxgraph.er.entity;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="680" y="30" width="110" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="11" value="" style="endArrow=none;dashed=1;strokeColor=#b85450;strokeWidth=1;" edge="1" parent="1" source="10">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="735" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Role Dashboards -->
+    <mxCell id="12" value="dashboard/teacher.php&#xa;dashboard/student.php&#xa;dashboard/guardian.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="850" y="35" width="160" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="13" value="" style="endArrow=none;dashed=1;strokeColor=#d79b00;strokeWidth=1;" edge="1" parent="1" source="12">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="930" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Protected Page -->
+    <mxCell id="14" value="Protected Page&#xa;(classroom/*.php)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1070" y="40" width="130" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="15" value="" style="endArrow=none;dashed=1;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1" source="14">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1135" y="1100"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION A: REGISTRATION                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <mxCell id="20" value="── A. REGISTRATION ──" style="text;html=1;strokeColor=none;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="115" width="1160" height="30" as="geometry"/>
+    </mxCell>
+
+    <!-- 1: User requests register page -->
+    <mxCell id="21" value="1: GET index.php (Register tab)" style="endArrow=open;endFill=0;html=1;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="4">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 2: Return form -->
+    <mxCell id="22" value="2: Render registration form" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="4" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 3: POST register -->
+    <mxCell id="23" value="3: POST ?action=register {name, email, password, role}" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="6">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 4: Check uniqueness -->
+    <mxCell id="24" value="4: SELECT * FROM users WHERE email = ?" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="10">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="25" value="5: Result (exists / not exists)" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="10" target="6">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 6: Hash password -->
+    <mxCell id="26" value="6: password_hash(password, PASSWORD_DEFAULT) → BCrypt" style="endArrow=open;endFill=0;html=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="6">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="395" y="330"/><mxPoint x="430" y="330"/><mxPoint x="430" y="310"/></Array></mxGeometry>
+    </mxCell>
+    <!-- 7: INSERT user -->
+    <mxCell id="27" value="7: INSERT INTO users (name, email, bcrypt_hash, role)" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="10">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 8: Set session -->
+    <mxCell id="28" value="8: $_SESSION['user'] = user_row; $_SESSION['user_id'] = id" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="8">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <!-- 9: Return success + role -->
+    <mxCell id="29" value="9: JSON {success: true, role}" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="6" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION B: LOGIN & ROLE-BASED ROUTING       -->
+    <!-- ═══════════════════════════════════════════ -->
+    <mxCell id="30" value="── B. LOGIN &amp; ROLE-BASED REDIRECT ──" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="440" width="1160" height="30" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="31" value="10: GET index.php (Login tab)" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="4">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="32" value="11: Render login form" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="4" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="33" value="12: POST ?action=login {email, password}" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="6">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="34" value="13: SELECT * FROM users WHERE email = ?" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="10">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="35" value="14: user_row / NULL" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="10" target="6">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="36" value="15: password_verify(input, bcrypt_hash) → true/false" style="endArrow=open;endFill=0;html=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="6">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="395" y="610"/><mxPoint x="430" y="610"/><mxPoint x="430" y="590"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="37" value="16: session_start() → $_SESSION['user'], ['user_id'], ['role']" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="8">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="38" value="17: JSON {success: true, role, redirect_url}" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="6" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="39" value="18: JS reads role → redirect to role dashboard" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="12">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="40" value="19: Render role-specific dashboard (Teacher / Student / Guardian)" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="12" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION C: ACCESS GUARD                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <mxCell id="50" value="── C. ROLE-BASED ACCESS GUARD (Protected Page) ──" style="text;html=1;strokeColor=none;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="760" width="1160" height="30" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="51" value="20: GET classroom/index.php?id=42 (direct URL access)" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="14">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="52" value="21: Check isset($_SESSION['user_id'])" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="14" target="8">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="53" value="22: $_SESSION['role'] → verify enrollment in class_members" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="14" target="10">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="54" value="23: authorized → Render page with role-appropriate tabs" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="14" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+
+    <!-- Auth fail note -->
+    <mxCell id="55" value="[If not authenticated] → redirect to /index.php&#xa;[If not enrolled] → 403 Access Denied" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="860" y="820" width="260" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION D: LOGOUT                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <mxCell id="60" value="── D. LOGOUT ──" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="930" width="1160" height="30" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="61" value="24: GET api/auth.php?action=logout" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="6">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="62" value="25: session_start() → $_SESSION = [] → session_destroy()" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="6" target="8">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="63" value="26: header('Location: /index.php') → Redirect to Login" style="endArrow=open;endFill=0;html=1;fontSize=10;dashed=1;" edge="1" parent="1" source="6" target="2">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+    <mxCell id="64" value="27: GET index.php → Render clean Login page" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="2" target="4">
+      <mxGeometry x="-0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+    </mxCell>
+
+    <!-- Title -->
+    <mxCell id="100" value="SD-1: SmartClass LMS — Role-Based Authentication &amp; Authorization" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+      <mxGeometry x="40" y="-50" width="1160" height="40" as="geometry"/>
+    </mxCell>
+
+  </root>
+</mxGraphModel>

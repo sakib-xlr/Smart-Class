@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="2" value="Figure 3.1: Class Diagram — SmartClass LMS Core Components" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="300" y="10" width="1000" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- DatabaseHelper class -->
+    <mxCell id="10" value="«Utility»&#xa;DatabaseHelper" style="swimlane;startSize=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="60" width="240" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="11" value="-pdo: PDO&#xa;-host: string&#xa;-dbName: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="10">
+      <mxGeometry y="40" width="240" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="12" value="+getConnection(): PDO&#xa;+jsonResponse(data, status): void&#xa;+redirect(url): void&#xa;+e(str): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="10">
+      <mxGeometry y="80" width="240" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- AuthController class -->
+    <mxCell id="20" value="«Controller»&#xa;AuthController" style="swimlane;startSize=40;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="340" y="60" width="240" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="21" value="-pdo: PDO&#xa;-session: array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry y="40" width="240" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="22" value="+login(email, password): JSON&#xa;+register(name, email, pass, role): JSON&#xa;+logout(): void&#xa;-startSession(user[]): void&#xa;-hashPassword(plain): string&#xa;-verifyPassword(plain, hash): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry y="70" width="240" height="90" as="geometry" />
+    </mxCell>
+
+    <!-- ClassroomController -->
+    <mxCell id="30" value="«Controller»&#xa;ClassroomController" style="swimlane;startSize=40;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="620" y="60" width="240" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="31" value="-pdo: PDO&#xa;-currentUser: array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="30">
+      <mxGeometry y="40" width="240" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="32" value="+createClass(name, section, room, subject): JSON&#xa;+joinClass(code, studentId): JSON&#xa;+postAnnouncement(classId, content): JSON&#xa;+archiveClass(classId): JSON&#xa;+restoreClass(classId): JSON&#xa;-generateCode(length): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="30">
+      <mxGeometry y="70" width="240" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- AssignmentController -->
+    <mxCell id="40" value="«Controller»&#xa;AssignmentController" style="swimlane;startSize=40;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="60" width="240" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="41" value="-pdo: PDO&#xa;-fileService: FileUploadService&#xa;-notifService: NotificationController" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="40">
+      <mxGeometry y="40" width="240" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="42" value="+createAssignment(classId, title, dueDate, pts): JSON&#xa;+submitAssignment(assignId, studentId, file): JSON&#xa;+gradeSubmission(submissionId, grade, feedback): JSON&#xa;+getSubmissions(assignId): JSON&#xa;-detectLateSubmission(dueDate): bool&#xa;-verifyTeacherOwnership(classId): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="40">
+      <mxGeometry y="80" width="240" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- QRAttendanceController -->
+    <mxCell id="50" value="«Controller»&#xa;QRAttendanceController" style="swimlane;startSize=40;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="270" width="260" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="51" value="-pdo: PDO&#xa;-qrService: QRCodeService" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="50">
+      <mxGeometry y="40" width="260" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="52" value="+generateQRSession(classId, date, duration): JSON&#xa;+scanQRToken(token, studentId): JSON&#xa;+getSessionStatus(classId): JSON&#xa;+manualMarkAttendance(classId, studentId, status): JSON&#xa;-verifyStudentEnrollment(classId, studentId): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="50">
+      <mxGeometry y="70" width="260" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- QuizController -->
+    <mxCell id="60" value="«Controller»&#xa;QuizController" style="swimlane;startSize=40;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="360" y="270" width="250" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="61" value="-pdo: PDO&#xa;-notifService: NotificationController" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="60">
+      <mxGeometry y="40" width="250" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="62" value="+createQuiz(classId, title, timeLimit): JSON&#xa;+submitQuizAnswers(quizId, studentId, answers[]): JSON&#xa;+toggleQuizStatus(quizId, status): JSON&#xa;+createPoll(classId, question, options[]): JSON&#xa;+voteInPoll(pollId, studentId, optionIdx): JSON&#xa;-autoGrade(questions[], answers[]): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="60">
+      <mxGeometry y="70" width="250" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- AnalyticsController -->
+    <mxCell id="70" value="«Controller»&#xa;AnalyticsController" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="650" y="270" width="260" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="71" value="-pdo: PDO&#xa;-currentUser: array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="70">
+      <mxGeometry y="40" width="260" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="72" value="+loadStudentAnalytics(studentId, classId): JSON&#xa;-getGradesPerAssignment(studentId, classId): array&#xa;-getAttendanceSummary(studentId, classId): array&#xa;-getQuizAverage(studentId, classId): float&#xa;-computeOverallStats(classes[]): array&#xa;-validateGuardianAccess(guardianId, studentId): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="70">
+      <mxGeometry y="70" width="260" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- AIChatController -->
+    <mxCell id="80" value="«Controller»&#xa;AIChatController" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="950" y="270" width="260" height="160" as="geometry" />
+    </mxCell>
+    <mxCell id="81" value="-apiUrl: string&#xa;-apiKey: string&#xa;-model: string&#xa;-pdo: PDO" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="80">
+      <mxGeometry y="40" width="260" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="82" value="+handleChatRequest(message, userId): JSON&#xa;-buildContextString(userId, role): string&#xa;-callOpenRouterAPI(messages[]): string&#xa;-getHistory(userId): array&#xa;-appendMessage(userId, role, content): void&#xa;-trimHistory(userId): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="80">
+      <mxGeometry y="80" width="260" height="90" as="geometry" />
+    </mxCell>
+
+    <!-- NotificationController -->
+    <mxCell id="90" value="«Controller»&#xa;NotificationController" style="swimlane;startSize=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="500" width="250" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="91" value="-pdo: PDO" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="90">
+      <mxGeometry y="40" width="250" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="92" value="+pushAlert(userId, title, message, type, link): void&#xa;+getUnreadCount(userId): int&#xa;+markAsRead(notifId): JSON&#xa;+markAllAsRead(userId): JSON" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="90">
+      <mxGeometry y="60" width="250" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- FileUploadService -->
+    <mxCell id="100" value="«Service»&#xa;FileUploadService" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="360" y="500" width="250" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="101" value="-allowedExtensions: array&#xa;-uploadDir: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="100">
+      <mxGeometry y="40" width="250" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="102" value="+uploadFile(file, subDir, prefix): string&#xa;-validateFileType(filename): bool&#xa;-ensureDirectoryExists(path): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="100">
+      <mxGeometry y="70" width="250" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- QRCodeService -->
+    <mxCell id="110" value="«Service»&#xa;QRCodeService" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="500" width="250" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="111" value="-qrApiBase: string&#xa;-baseUrl: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="110">
+      <mxGeometry y="40" width="250" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="112" value="+generateQRUrl(data, size): string&#xa;+buildScanUrl(token): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="110">
+      <mxGeometry y="70" width="250" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- LayoutRenderer -->
+    <mxCell id="120" value="«Component»&#xa;LayoutRenderer" style="swimlane;startSize=40;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="960" y="500" width="250" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="121" value="-currentUser: array&#xa;-pageTitle: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="120">
+      <mxGeometry y="40" width="250" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="122" value="+renderHead(title): void&#xa;+renderSidebar(role): void&#xa;+renderTopbar(user): void&#xa;+renderFooter(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;" vertex="1" parent="120">
+      <mxGeometry y="70" width="250" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Relationships -->
+    <!-- AuthController uses DatabaseHelper -->
+    <mxCell id="r1" value="«uses»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="20" target="10" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- ClassroomController uses DatabaseHelper -->
+    <mxCell id="r2" value="«uses»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="30" target="10" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- AssignmentController uses FileUploadService -->
+    <mxCell id="r3" value="«uses»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="40" target="100" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- AssignmentController calls NotificationController -->
+    <mxCell id="r4" value="«notifies»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="40" target="90" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- QRAttendanceController uses QRCodeService -->
+    <mxCell id="r5" value="«uses»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="50" target="110" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- QuizController calls NotificationController -->
+    <mxCell id="r6" value="«notifies»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="60" target="90" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- ClassroomController calls NotificationController -->
+    <mxCell id="r7" value="«notifies»" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="30" target="90" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+  </root>
+</mxGraphModel>

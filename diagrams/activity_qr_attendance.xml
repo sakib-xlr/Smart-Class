@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="2" value="Figure 2.2: Activity Diagram — QR Code Attendance Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="200" y="10" width="780" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Swimlane: Teacher -->
+    <mxCell id="10" value="TEACHER" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="50" width="340" height="700" as="geometry" />
+    </mxCell>
+
+    <!-- Swimlane: System -->
+    <mxCell id="11" value="SYSTEM" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="420" y="50" width="330" height="700" as="geometry" />
+    </mxCell>
+
+    <!-- Swimlane: Student -->
+    <mxCell id="12" value="STUDENT" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="770" y="50" width="340" height="700" as="geometry" />
+    </mxCell>
+
+    <!-- Start -->
+    <mxCell id="20" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+      <mxGeometry x="215" y="80" width="30" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Teacher: Open Attendance Page -->
+    <mxCell id="21" value="Open Attendance Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="145" y="140" width="170" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Teacher: Select Duration -->
+    <mxCell id="22" value="Select Duration (1–60 min) &amp; Click Generate QR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="130" y="220" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- System: Create Token & Session -->
+    <mxCell id="30" value="Create Cryptographic Token (64-char hex) &amp; Insert QR Session Record" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="450" y="210" width="240" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- System: Generate QR Image -->
+    <mxCell id="31" value="Request QR Image from api.qrserver.com" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="455" y="300" width="230" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Teacher: Display QR Code -->
+    <mxCell id="23" value="Display QR Code with Countdown Timer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="135" y="360" width="200" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Student: Poll Every 3s -->
+    <mxCell id="40" value="Auto-Poll Every 3 Seconds (GET status API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="810" y="140" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- System: Check Active Session -->
+    <mxCell id="32" value="Check for Active Session" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="455" y="380" width="220" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Student: Show QR -->
+    <mxCell id="41" value="Display QR Code &amp; Token to Student" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="810" y="220" width="200" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Student: Scan QR -->
+    <mxCell id="42" value="Scan QR Code or Enter Token Manually" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="810" y="300" width="200" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- System: Validate -->
+    <mxCell id="33" value="Validate: Token Valid? Not Expired? Enrolled? Not Duplicate?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="445" y="460" width="250" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- System: Insert Attendance -->
+    <mxCell id="34" value="INSERT INTO attendance (status='present')" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="455" y="570" width="230" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Student: Success Toast -->
+    <mxCell id="43" value="Show Success Toast 'Attendance Marked'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="810" y="380" width="200" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- System: Error Toast -->
+    <mxCell id="35" value="Show Error Toast (Already Checked-In / Invalid / Expired)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="455" y="640" width="230" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Teacher: Live Attendance List -->
+    <mxCell id="24" value="Live Attendance Roster Updates (every 3 sec)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="130" y="440" width="210" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Timer expires -->
+    <mxCell id="25" value="QR Session Expires (is_active = 0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="140" y="540" width="190" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- End -->
+    <mxCell id="99" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#000000;strokeWidth=3;" vertex="1" parent="1">
+      <mxGeometry x="215" y="620" width="30" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Edges -->
+    <mxCell id="e1" edge="1" source="20" target="21" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e2" edge="1" source="21" target="22" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e3" edge="1" source="22" target="30" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e4" edge="1" source="30" target="31" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e5" edge="1" source="31" target="23" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e6" edge="1" source="40" target="32" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e7" value="Active" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="32" target="41" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e8" edge="1" source="41" target="42" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e9" edge="1" source="42" target="33" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e10" value="Valid" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="33" target="34" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e11" edge="1" source="34" target="43" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e12" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="33" target="35" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e13" edge="1" source="23" target="24" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e14" edge="1" source="24" target="25" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e15" edge="1" source="25" target="99" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+  </root>
+</mxGraphModel>
