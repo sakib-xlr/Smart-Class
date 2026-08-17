@@ -14,8 +14,9 @@ nixPkgs = [
 
 [phases.build]
 cmds = [
-  "cp apache.conf /etc/apache2/sites-available/000-default.conf || true"
+  "cp apache.conf /etc/apache2/sites-available/000-default.conf || true",
+  "chmod +x start.sh"
 ]
 
 [start]
-cmd = "apache2ctl -D FOREGROUND"
+cmd = "bash start.sh"
