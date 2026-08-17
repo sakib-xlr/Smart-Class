@@ -15,14 +15,29 @@ if (file_exists($_envFile)) {
 }
 unset($_envFile, $_line, $_k, $_v);
 
-// In production (Railway), these are set as environment variables.
-// Locally (XAMPP), the .env file above supplies them.
-define('DB_HOST',  getenv('MYSQLHOST')     ?: 'localhost');
-define('DB_USER',  getenv('MYSQLUSER')     ?: 'root');
-define('DB_PASS',  getenv('MYSQLPASSWORD') ?: '');
-define('DB_NAME',  getenv('MYSQLDATABASE') ?: 'smart_classroom');
-define('MYSQL_PORT', getenv('MYSQLPORT')   ?: '3306');
-define('BASE_URL', getenv('APP_URL')       ?: 'http://localhost/Smart_Class');
+// ── Resolve DB credentials ────────────────────────────────────
+// Priority: MYSQL_PUBLIC_URL (Railway public TCP proxy)
+//        → individual MYSQL* vars (Railway private network)
+//        → defaults (local XAMPP)
+$_dbUrl = getenv('MYSQL_PUBLIC_URL') ?: getenv('DATABASE_URL') ?: '';
+if ($_dbUrl) {
+    $_p = parse_url($_dbUrl);
+    define('DB_HOST',    $_p['host']);
+    define('DB_USER',    $_p['user']   ?? 'root');
+    define('DB_PASS',    $_p['pass']   ?? '');
+    define('DB_NAME',    ltrim($_p['path'] ?? '/railway', '/'));
+    define('MYSQL_PORT', (string)($_p['port'] ?? 3306));
+    unset($_p);
+} else {
+    define('DB_HOST',    getenv('MYSQLHOST')     ?: 'localhost');
+    define('DB_USER',    getenv('MYSQLUSER')     ?: 'root');
+    define('DB_PASS',    getenv('MYSQLPASSWORD') ?: '');
+    define('DB_NAME',    getenv('MYSQLDATABASE') ?: 'smart_classroom');
+    define('MYSQL_PORT', getenv('MYSQLPORT')     ?: '3306');
+}
+unset($_dbUrl);
+
+define('BASE_URL',   getenv('APP_URL')  ?: 'http://localhost/Smart_Class');
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
 
 // PDO Connection

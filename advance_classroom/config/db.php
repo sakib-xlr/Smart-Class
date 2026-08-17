@@ -19,14 +19,22 @@ if (file_exists($_envFile)) {
 }
 unset($_envFile, $_line, $_k, $_v);
 
-// ============================================================
-// Database Configuration
-// ============================================================
-define('DB_HOST',    getenv('MYSQLHOST')     ?: 'localhost');
-define('DB_NAME',    getenv('MYSQLDATABASE') ?: 'advanced_classroom');
-define('DB_USER',    getenv('MYSQLUSER')     ?: 'root');
-define('DB_PASS',    getenv('MYSQLPASSWORD') ?: '');
-define('DB_CHARSET', 'utf8mb4');
+// ── Resolve DB credentials (same as main config/db.php) ──────
+$_dbUrl = getenv('MYSQL_PUBLIC_URL') ?: getenv('DATABASE_URL') ?: '';
+if ($_dbUrl) {
+    $_p = parse_url($_dbUrl);
+    define('DB_HOST',    $_p['host']);
+    define('DB_USER',    $_p['user']   ?? 'root');
+    define('DB_PASS',    $_p['pass']   ?? '');
+    define('DB_NAME',    ltrim($_p['path'] ?? '/railway', '/'));
+    unset($_p);
+} else {
+    define('DB_HOST', getenv('MYSQLHOST')     ?: 'localhost');
+    define('DB_NAME', getenv('MYSQLDATABASE') ?: 'advanced_classroom');
+    define('DB_USER', getenv('MYSQLUSER')     ?: 'root');
+    define('DB_PASS', getenv('MYSQLPASSWORD') ?: '');
+}
+unset($_dbUrl);
 
 // ============================================================
 // Application Configuration
