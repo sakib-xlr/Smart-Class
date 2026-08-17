@@ -2,8 +2,21 @@
 // =============================================
 // Smart Classroom System — Database Config
 // =============================================
+
+// ── Load .env file (local development only) ──
+$_envFile = __DIR__ . '/../.env';
+if (file_exists($_envFile)) {
+    foreach (file($_envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $_line) {
+        if (str_starts_with(trim($_line), '#') || !str_contains($_line, '=')) continue;
+        [$_k, $_v] = explode('=', $_line, 2);
+        $_k = trim($_k); $_v = trim($_v);
+        if (!getenv($_k)) putenv("$_k=$_v");  // don't override real env vars (Railway)
+    }
+}
+unset($_envFile, $_line, $_k, $_v);
+
 // In production (Railway), these are set as environment variables.
-// Locally (XAMPP), the fallback values are used.
+// Locally (XAMPP), the .env file above supplies them.
 define('DB_HOST',  getenv('MYSQLHOST')     ?: 'localhost');
 define('DB_USER',  getenv('MYSQLUSER')     ?: 'root');
 define('DB_PASS',  getenv('MYSQLPASSWORD') ?: '');
