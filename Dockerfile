@@ -13,7 +13,9 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
       gd zip mbstring
 
 # Enable Apache mod_rewrite (needed for .htaccess)
-RUN a2enmod rewrite
+# Disable mpm_event — PHP requires mpm_prefork
+RUN a2dismod mpm_event || true \
+ && a2enmod mpm_prefork rewrite
 
 # ─── App Files ──────────────────────────────────────────────
 WORKDIR /var/www/html
