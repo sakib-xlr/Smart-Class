@@ -12,9 +12,12 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
       pdo pdo_mysql mysqli \
       gd zip mbstring
 
-# Enable Apache mod_rewrite (needed for .htaccess)
-# Disable mpm_event — PHP requires mpm_prefork
-RUN a2dismod mpm_event || true \
+# Force ONLY mpm_prefork — remove all other MPM module symlinks directly
+# (a2dismod is unreliable in php:8.2-apache base image)
+RUN rm -f /etc/apache2/mods-enabled/mpm_event.conf \
+          /etc/apache2/mods-enabled/mpm_event.load \
+          /etc/apache2/mods-enabled/mpm_worker.conf \
+          /etc/apache2/mods-enabled/mpm_worker.load \
  && a2enmod mpm_prefork rewrite
 
 # ─── App Files ──────────────────────────────────────────────
